@@ -1,9 +1,10 @@
 Changelog
 =========
 
-0.6.2b2 (2017-05-07)
+0.6.2b3 (2018-01-29)
 --------------------
-- 
+- Development moved to github.
+- General improvements and update.
 
 0.6.2b1 (2017-01-19)
 --------------------
