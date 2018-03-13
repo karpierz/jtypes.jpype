@@ -34,7 +34,7 @@ class SerializationTestCase(common.JPypeTestCase):
     def testSerialize(self):
         o = JClass("jpype.serial.SerializationTest")()
         tmp = self.tempname
-        if sys.platform=='cygwin':  # pragma: no cover  # <AK> added
+        if sys.platform=='cygwin':  # pragma: no cover # <AK> added
             from jt.jpype import _posix2win
             tmp = _posix2win(tmp)
         fos = java.io.FileOutputStream(tmp)

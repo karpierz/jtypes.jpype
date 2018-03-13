@@ -35,9 +35,9 @@ def runBaseline(data):
     # print('    Start time (no optimize) on my machine is 3.56 seconds.')  # <AK> commented
     start = time.time()
 
-    darr = array.array('b', data)  # <AK> uncomment, fix, was: , DATA)
+    darr = array.array('b', data)  # <AK> uncomment, fix, was: array.array('b', DATA)
     arr_cls = jpype.JArray(jpype.JByte)
-    java_arr = arr_cls(darr)  # <AK> fix, was: (DATA)
+    java_arr = arr_cls(darr)  # <AK> fix, was: arr_cls(DATA)
 
     end = time.time()
 
@@ -79,7 +79,7 @@ class ConversionTestCase(common.JPypeTestCase):
 
     @classmethod
     def setUpClass(cls):
-        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        root = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
        #jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", "-Xmx35M", "-verbose:gc",
         jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", "-Xmx5M", "-verbose:gc",
                        "-Djava.class.path=./classes%s%s%sclasses" % (os.pathsep, root, os.sep))
@@ -109,7 +109,7 @@ class ConversionTestCase(common.JPypeTestCase):
         print('now waiting for the string to get deleted')
         global DELETED  # <AK> added
         while not DELETED:
-            time.sleep(0.2)  # <AK> was: (1)
+            time.sleep(0.2)  # <AK> was: time.sleep(1)
 
             print('.', end='')
             jpype.JPackage("jpype").nio.NioReceive.allocSomeMemory()

@@ -30,11 +30,11 @@ def haveJImports():
     try:
         import jt.jpype.imports
         return True
-    except ImportError:  # pragma: no cover  # <AK> added
+    except ImportError:  # pragma: no cover # <AK> added
         return False
 
 def isJavaClass(tp):
-    return isinstance(tp, jpype.JavaClass)
+    return isinstance(tp, jpype.JavaClass)  # <AK> was: jpype._jclass._JavaClass
 
 class ImportsTestCase(common.JPypeTestCase):
     def setUp(self):

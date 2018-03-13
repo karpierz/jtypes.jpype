@@ -31,13 +31,9 @@ if sys.version > '3':
 
 def haveNumpy():
     try:
-        #import numpy  # <AK> commented
-        #return True   # <AK> commented
-        # <AK> more accurate due to java import issue
-        from numpy import numarray
-        return not hasattr(numarray, "__jvm__")
-        #</AK>
-    except ImportError:  # pragma: no cover  # <AK> added
+        import numpy
+        return True
+    except ImportError:  # pragma: no cover # <AK> added
         return False
 
 
@@ -262,7 +258,7 @@ class ArrayTestCase(common.JPypeTestCase):
     def testSetFromNPIntArray(self):
         import numpy as np
         n = 100
-        a = np.random.randint(-2**31, 2**31 - 1, size=n).astype(np.int32)  # <AK> fix, was: (-2**31 - 1,
+        a = np.random.randint(-2**31, 2**31 - 1, size=n).astype(np.int32)
         jarr = jpype.JArray(jpype.JInt)(n)
         jarr[:] = a
         self.assertCountEqual(a, jarr)
@@ -273,7 +269,7 @@ class ArrayTestCase(common.JPypeTestCase):
         n = 100
         # actuall the lower bound should be -2**63 -1, but raises Overflow
         # error in numpy
-        a = np.random.uniform(-2**63, 2**63, size=n).astype(np.int64)  # <AK> fix, was: randint(-2**63, 2**63 - 1,
+        a = np.random.randint(-2**63, 2**63 - 1, size=n, dtype=np.int64)
         jarr = jpype.JArray(jpype.JLong)(n)
         jarr[:] = a
         self.assertCountEqual(a, jarr)

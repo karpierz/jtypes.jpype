@@ -30,7 +30,7 @@ CLASSPATH = None
 class JPypeTestCase(unittest.TestCase) :
     def setUp(self):
         if not jpype.isJVMStarted():
-            root = path.dirname(path.dirname(path.abspath(__file__)))
+            root = path.dirname(path.abspath(path.dirname(__file__)))
             jpype.addClassPath(path.join(root, 'classes'))
             jvm_path = jpype.getDefaultJVMPath()
             logger = logging.getLogger(__name__)
@@ -41,7 +41,7 @@ class JPypeTestCase(unittest.TestCase) :
                            # "-Xcheck:jni",
                            "-Xmx512M", "-Xms16M", classpath_arg)  # <AK> was: "-Xmx256M"
         self.jpype = jpype.JPackage('jpype')
-        if sys.version < '3':  # pragma: no cover  # <AK> added
+        if sys.version < '3':  # pragma: no cover # <AK> added
             self.assertCountEqual = self.assertItemsEqual
 
     def tearDown(self):

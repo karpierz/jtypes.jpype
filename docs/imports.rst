@@ -29,7 +29,7 @@ Example:
 
   mystr = java.lang.String('hello')
   mylist = java.util.LinkedList()
-  path = java.nio.files.Paths.get() # ERROR java.nio.files not imported
+  path = java.nio.files.Paths.get()  # ERROR java.nio.files not imported
 
 2) Import of the package path as a module
 -----------------------------------------
@@ -44,7 +44,7 @@ Example:
 
   import java.nio as nio
   bb = nio.ByteBuffer()
-  path = nio.file.Path()   # ERROR subpackages file must be imported
+  path = nio.file.Path()  # ERROR subpackages file must be imported
 
 3) Import a class from an object
 --------------------------------

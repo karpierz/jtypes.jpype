@@ -50,8 +50,7 @@ class ArrayFixesTestCase(common.JPypeTestCase):
         """
         #   Check memory settings.
         rt = jpype.java.lang.Runtime.getRuntime()
-        # <AK>: assertTrue -> assertEqual
-        self.assertEqual(rt.maxMemory(), MAX_JVM_HEAP_SIZE_BYTES)
+        self.assertTrue(rt.maxMemory() == MAX_JVM_HEAP_SIZE_BYTES)
 
         #   Perform leak test.
         for i in range(ITERATIONS):

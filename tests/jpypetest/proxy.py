@@ -96,8 +96,7 @@ class ProxyTestCase(common.JPypeTestCase):
         expected = ['Test Method2 = 42', 'Test Method3 = Bar']
         self.assertSequenceEqual(result, expected)
 
-    def testProxyWithDictAndInstError(self):
-        # <AK> additional
+    def testProxyWithDictAndInstError(self):  # <AK> added
         itf1 = self.package.TestInterface1
         itf2 = self.package.TestInterface2
         d = {
@@ -138,7 +137,7 @@ class ProxyTestCase(common.JPypeTestCase):
 
         try:
             result = self._triggers.testProxy(proxy)
-        except Exception as ex:
+        except Exception as ex:  # pragma: no cover # <AK> added
             print(ex.stacktrace())
             raise ex
 

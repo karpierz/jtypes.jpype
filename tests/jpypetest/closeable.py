@@ -69,7 +69,7 @@ class CloseableTestCase(common.JPypeTestCase):
             with CloseableTest() as myFile:
                 myFile.print_("hello 2")
                 raise TypeError("Python exception")
-                myFile.print_("there")  # pragma: no cover  # <AK> added
+                myFile.print_("there")  # pragma: no cover # <AK> added
         except Exception as ex:
             self.assertIsInstance(ex, TypeError)
         self.assertEqual(CloseableTest.printed, "hello 2")
@@ -86,7 +86,7 @@ class CloseableTestCase(common.JPypeTestCase):
             with CloseableTest() as myFile:
                 myFile.print_("hello 3")
                 raise TypeError("Python exception")
-                myFile.print_("there")  # pragma: no cover  # <AK> added
+                myFile.print_("there")  # pragma: no cover # <AK> added
         except TypeError as ex:
             self.assertIsInstance(ex, TypeError)
         self.assertEqual(CloseableTest.printed, "hello 3")
@@ -102,7 +102,7 @@ class CloseableTestCase(common.JPypeTestCase):
             with CloseableTest() as myFile:
                 myFile.print_("hello 4")
                 myFile.throwException()
-                myFile.print_("there")  # pragma: no cover  # <AK> added
+                myFile.print_("there")  # pragma: no cover # <AK> added
         except Exception as ex:
             self.assertIsInstance(ex, jpype.JavaException, 'type is %s'%type(ex))
             self.assertEqual(ex.args[0].getMessage(), 'oh no!')
@@ -120,7 +120,7 @@ class CloseableTestCase(common.JPypeTestCase):
             with CloseableTest() as myFile:
                 myFile.print_("hello 5")
                 myFile.throwException()
-                myFile.print_("there")  # pragma: no cover  # <AK> added
+                myFile.print_("there")  # pragma: no cover # <AK> added
         except Exception as ex:
             self.assertIsInstance(ex, jpype.JavaException, 'type is %s'%type(ex))
             self.assertEqual(ex.args[0].getMessage(), 'oh no!') # fail if get "oh my?"

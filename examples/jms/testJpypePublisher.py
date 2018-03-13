@@ -9,14 +9,12 @@ import time
 
 NUMMSGS = 10
 
-
 def pyPublisher(javaNamingFactory="weblogic.jndi.WLInitialContextFactory",
                 javaNamingProvider="t3://158.188.40.21:7001",
                 connectionFactory="weblogic.jms.ConnectionFactory",
                 topicName="defaultTopic"):
     return messaging.JpypePublisher(javaNamingFactory, javaNamingProvider,
                                     connectionFactory, topicName)
-
 
 ## Startup Jpype and import the messaging java package
 startJVM(None,

@@ -16,7 +16,7 @@ class ClosedTestCase(common.JPypeTestCase):
         s._allowed = 1
         try:
             s.forbidden = 1
-        except AttributeError:  # pragma: no cover  # <AK> added
+        except AttributeError:  # pragma: no cover # <AK> added
             pass
         else:
             raise AssertionError("AttributeError not raised")
@@ -28,7 +28,7 @@ class ClosedTestCase(common.JPypeTestCase):
         try:
             # Setting public members is prohibited
             s.forbidden = 1
-        except AttributeError:  # pragma: no cover  # <AK> added
+        except AttributeError:  # pragma: no cover # <AK> added
             pass
         else:
             raise AssertionError("AttributeError not raised")

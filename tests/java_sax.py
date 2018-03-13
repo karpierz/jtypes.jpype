@@ -19,7 +19,7 @@ from os import path
 import time
 from jt.jpype import *
 
-root = path.dirname(path.abspath(__file__))
+root = path.abspath(path.dirname(__file__))
 startJVM(getDefaultJVMPath(), "-ea",
          "-Djava.class.path=%s" % path.join(root, "classes"))
 

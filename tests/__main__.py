@@ -26,7 +26,7 @@ def test_suite(names=None, omit=("convtest", "jarray_fixes")):
     return tests
 
 
-def runTest():
+def main():
 
     import jt.jpype as jpype
     jvm_path = jpype.getDefaultJVMPath()
@@ -43,11 +43,7 @@ def runTest():
     sys.exit(0 if result.wasSuccessful() else 1)
 
 
-def main():
-
+if __name__.rpartition(".")[-1] == "__main__":
     # logging.basicConfig(level=logging.INFO)  # <AK> commented
     # logging.basicConfig(level=logging.DEBUG)
-    runTest()
-
-
-main()
+    main()

@@ -51,10 +51,10 @@ Here is a sample program to demonstrate how to use jtypes.jpype:
 
 .. code:: python
 
-   from jt.jpype import *
-   startJVM(getDefaultJVMPath(), "-ea")
-   java.lang.System.out.println("hello world")
-   shutdownJVM()
+  from jt.jpype import *
+  startJVM(getDefaultJVMPath(), "-ea")
+  java.lang.System.out.println("hello world")
+  shutdownJVM()
 
 This is of course a simple **hello world** type of application. Yet it shows
 the 2 most important calls: **startJVM** and **shutdownJVM**.
@@ -182,7 +182,7 @@ create an array is like this:
 
 .. code:: python
 
-   JArray(type, num_dims)(sz or sequence)
+  JArray(type, num_dims)(sz or sequence)
 
 Type is either a Java Class (as a String or a JavaClass object) or a Wrapper
 type. num_dims is the number of dimensions to build the array and defaults to
@@ -339,43 +339,43 @@ Assume a Java interface like:
 
 .. code:: java
 
-   public interface ITestInterface2
-   {
-       int testMethod();
-       String testMethod2();
-   }
+  public interface ITestInterface2
+  {
+      int testMethod();
+      String testMethod2();
+  }
 
 You can create a proxy *implementing* this interface in 2 ways.
 First, with a class:
 
 .. code:: python
 
-   class C:
+  class C:
 
-       def testMethod(self):
-           return 42
+      def testMethod(self):
+          return 42
 
-       def testMethod2(self):
-           return "Bar"
+      def testMethod2(self):
+          return "Bar"
 
-   c = C()
-   proxy = JProxy("ITestInterface2", inst=c)
+  c = C()
+  proxy = JProxy("ITestInterface2", inst=c)
 
 or you can do it with a dictionary:
 
 .. code:: python
 
-   def _testMethod():
-       return 32
-   
-   def _testMethod2():
-       return "Fooo!"
-   
-   d = {
-       "testMethod": _testMethod,
-       "testMethod2": _testMethod2,
-   }
-   proxy = JProxy("ITestInterface2", dict=d)
+  def _testMethod():
+      return 32
+
+  def _testMethod2():
+      return "Fooo!"
+
+  d = {
+      "testMethod": _testMethod,
+      "testMethod2": _testMethod2,
+  }
+  proxy = JProxy("ITestInterface2", dict=d)
 
 
 Java Exceptions
@@ -399,23 +399,23 @@ Here is an example:
 
 .. code:: python
 
-   try:
-       # Code that throws a java.lang.RuntimeException
-   except JavaException as exc:
-       if exc.javaClass() is java.lang.RuntimeException:
-           print("Caught the runtime exception : {}".format(exc.message())
-           print(exc.stacktrace())
+  try:
+      # Code that throws a java.lang.RuntimeException
+  except JavaException as ex:
+      if ex.javaClass() is java.lang.RuntimeException:
+          print("Caught the runtime exception : {}".format(ex.message())
+          print(ex.stacktrace())
 
 Alternately, you can catch the REAL Java exception directly by using
 the JException wrapper.
 
 .. code:: python
 
-   try:
-       # Code that throws a java.lang.RuntimeException
-   except jt.jpype.JException(java.lang.RuntimeException) as exc:
-       print("Caught the runtime exception : {}".format(exc.message())
-       print(exc.stacktrace())
+  try:
+      # Code that throws a java.lang.RuntimeException
+  except jt.jpype.JException(java.lang.RuntimeException) as ex:
+      print("Caught the runtime exception : {}".format(ex.message())
+      print(ex.stacktrace())
 
 
 Known limitations
@@ -659,7 +659,7 @@ For example, to import the w3c DOM package:
 
 .. code:: python
 
-   Document = JPackage("org").w3c.dom.Document
+  Document = JPackage("org").w3c.dom.Document
 
 
 Predefined Java packages
@@ -690,10 +690,10 @@ So for the following code:
 
 .. code:: python
 
-   from jt.jpype import *
-   startJVM(getDefaultJVMPath(), "-ea")
-   java.lang.System.out.println(1)
-   shutdownJVM()
+  from jt.jpype import *
+  startJVM(getDefaultJVMPath(), "-ea")
+  java.lang.System.out.println(1)
+  shutdownJVM()
 
 jt.jpype will automatically choose the println(int) method, because the Python
 int matches exactly with the Java int, while all the other integral types
@@ -704,10 +704,10 @@ Changing the line thus:
 
 .. code:: python
 
-   from jt.jpype import *
-   startJVM(getDefaultJVMPath(), "-ea")
-   java.lang.System.out.println(JByte(1)) # <--- wrap the 1 in a JByte
-   shutdownJVM()
+  from jt.jpype import *
+  startJVM(getDefaultJVMPath(), "-ea")
+  java.lang.System.out.println(JByte(1))  # <--- wrap the 1 in a JByte
+  shutdownJVM()
 
 tells jt.jpype to choose the byte version.
 
@@ -752,4 +752,4 @@ java.lang.Number.
 
 
 .. fixes a bugs in original userguide.rst
-   stackTrace -> stacktrace
+  stackTrace -> stacktrace

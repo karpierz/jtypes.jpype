@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.6.2b5 (2018-03-13)
+--------------------
+- Improve and simplify setup and packaging.
+
 0.6.2b3 (2018-01-29)
 --------------------
 - Development moved to github.

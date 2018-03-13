@@ -29,19 +29,16 @@ class StartJVMCase(common.JPypeTestCase):
         common.JPypeTestCase.setUp(self)
 
     def testInvalidArgument(self):  # <AK> added
-        jvm_path = jpype.getDefaultJVMPath()
         with self.assertRaisesRegexp(RuntimeError, "VM Arguments must be string or tuple"):
             jpype.startJVM(None, 1)
         with self.assertRaisesRegexp(RuntimeError, "VM Arguments must be string or tuple"):
-            jpype.startJVM(jvm_path, 1)
+            jpype.startJVM(jpype.getDefaultJVMPath(), 1)
 
     def testStartup(self):
         # Test that we are robust to multiple startJVM
-        startJVM = jpype.startJVM             # <AK> added/improved
-        jvm_path = jpype.getDefaultJVMPath()  # <AK> added/improved
         try:
-            self.assertRaises(OSError, startJVM, jvm_path)
-            self.assertRaises(OSError, startJVM, jvm_path)  # pragma: no cover
+            self.assertRaises(OSError, jpype.startJVM, jpype.getDefaultJVMPath())
+            self.assertRaises(OSError, jpype.startJVM, jpype.getDefaultJVMPath())  # pragma: no cover
         except RuntimeError:
             pass 
         # Verify that we don't crash after repeat

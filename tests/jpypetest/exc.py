@@ -33,7 +33,7 @@ class ExceptionTestCase(common.JPypeTestCase):
     def testExceptionThrown(self):
         try:
             self.jpype.exc.ExceptionTest.throwRuntime()
-            self.fail()  # pragma: no cover  # <AK> added
+            self.fail()  # pragma: no cover # <AK> added
         except JavaException as ex:
             self.assertIs(ex.javaClass(), java.lang.RuntimeException)
             self.assertEqual('Foo', ex.message())
@@ -43,7 +43,7 @@ class ExceptionTestCase(common.JPypeTestCase):
     def testExceptionByJavaClass(self):
         try:
             self.jpype.exc.ExceptionTest.throwRuntime()
-            self.fail()  # pragma: no cover  # <AK> added
+            self.fail()  # pragma: no cover # <AK> added
         except JException(java.lang.RuntimeException) as ex:
             self.assertIs(ex.javaClass(), java.lang.RuntimeException)
             self.assertEqual('Foo', ex.message())
@@ -79,6 +79,6 @@ class ExceptionTestCase(common.JPypeTestCase):
     def testThrowChildExceptionFromCatchJExceptionParentClass(self):
         try:
             self.jpype.exc.ExceptionTest.throwChildTestException()
-            self.fail()  # pragma: no cover  # <AK> added
+            self.fail()  # pragma: no cover # <AK> added
         except JException(self.jpype.exc.ParentTestException) as ex:
             self.assertIsInstance(ex, self.jpype.exc.ChildTestException.PYEXC)

@@ -161,7 +161,7 @@ class OverloadTestCase(common.JPypeTestCase):
     def testDefaultMethods(self):
         try:
             testdefault = JClass('jpype.overloads.Test1$DefaultC')()
-        except:  # pragma: no cover  # <AK> added
+        except:  # pragma: no cover # <AK> added
             pass
         else:
             self.assertEquals('B', testdefault.defaultMethod())

@@ -1,4 +1,4 @@
-# ****************************************************************************
+#*****************************************************************************
 #   Copyright 2004-2008 Steve Menard
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 #
-# ****************************************************************************
+#*****************************************************************************
 #
 # porting for PY3, reformated (PEP8) and adopted for jt.jpype by Adam Karpierz
 #

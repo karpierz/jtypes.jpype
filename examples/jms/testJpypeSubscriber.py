@@ -7,7 +7,6 @@ from __future__ import absolute_import, division, print_function
 from jt.jpype import *
 import time
 
-
 def pySubscriber(proxy,
                  javaNamingFactory="weblogic.jndi.WLInitialContextFactory",
                  javaNamingProvider="t3://158.188.40.21:7001",
@@ -17,13 +16,11 @@ def pySubscriber(proxy,
                                      javaNamingFactory, javaNamingProvider,
                                      connectionFactory, topicName)
 
-
 ## Startup Jpype and import the messaging java package
 startJVM(None,
          "-Djava.class.path=D:/jIRAD/JpypeJMS/src;D:/jIRAD/JpypeJMS/classes;"
          "C:/bea/weblogic81/server/lib/weblogic.jar")
 messaging = JPackage('messaging')
-
 
 # Setup the JProxy for the messaging.JpypeSubscriberCallback interface
 class pyCallback:
@@ -41,7 +38,6 @@ class pyCallback:
                   float(pyCallback.count) / (time.time()-pyCallback.startTime))
         else:
             pyCallback.count += 1
-
 
 c = pyCallback()
 proxy = JProxy(messaging.JpypeSubscriberCallback, inst=c)
