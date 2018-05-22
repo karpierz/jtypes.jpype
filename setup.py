@@ -8,7 +8,7 @@ from os import path
 from setuptools import setup
 
 top_dir = path.dirname(path.abspath(__file__))
-with open(path.join(top_dir, "src", "jt", "jpype", "__about__.py")) as f:
+with open(path.join(top_dir, "jt", "jpype", "__about__.py")) as f:
     class about: exec(f.read(), None)
 
 setup(
@@ -23,6 +23,4 @@ setup(
     maintainer       = about.__maintainer__,
     maintainer_email = about.__email__,
     license          = about.__license__,
-
-    package_dir = {"": "src"},  # Needed only for PY2.
 )

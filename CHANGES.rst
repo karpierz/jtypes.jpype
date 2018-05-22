@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.3b1 (2018-05-22)
+--------------------
+- Synchro with JPype release.
+- Update required setuptools version.
+
 0.6.2b5 (2018-03-13)
 --------------------
 - Improve and simplify setup and packaging.
@@ -12,7 +17,7 @@ Changelog
 
 0.6.2b1 (2017-01-19)
 --------------------
-- Synchro with JPype release
+- Synchro with JPype release.
 
 0.6.1b3 (2017-01-01)
 --------------------

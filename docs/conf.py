@@ -17,7 +17,7 @@ import os
 
 top_dir = os.path.join(os.path.dirname(__file__), os.pardir)
 
-with open(os.path.join(top_dir, "src", "jt", "jpype", "__about__.py")) as f:
+with open(os.path.join(top_dir, "jt", "jpype", "__about__.py")) as f:
     class about: exec(f.read(), None)
 
 # If extensions (or modules to document with autodoc) are in another directory,

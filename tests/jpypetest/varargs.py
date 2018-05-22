@@ -29,8 +29,7 @@ if sys.version > '3':
     unicode = str
 
 # Test code
-class VarArgsTestCase(common.JPypeTestCase):  # <AK> was: BoxedTestCase
-#class VarArgsTestCase(unittest.TestCase):    #
+class VarArgsTestCase(common.JPypeTestCase):
     def setUp(self):
         common.JPypeTestCase.setUp(self)
         self.VarArgs = jpype.JClass('jpype.varargs.VarArgs')

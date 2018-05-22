@@ -6,9 +6,9 @@ set javac="%JAVA_HOME%"\bin\javac -encoding UTF-8 -g:none -deprecation -Xlint:un
     -source 1.7 -target 1.7 -bootclasspath "C:\Program Files\Java\jdk1.7.0_79\jre\lib\rt.jar"
 rmdir /Q/S classes 2> nul & mkdir classes
 dir /S/B/O:N ^
-    ..\..\jtypes.jvm\src\jt\jvm\java\org\python\*.java ^
-    ..\..\jtypes.jvm\src\jt\jvm\java\org\python\core\*.java ^
-    ..\..\jtypes.jvm\src\jt\jvm\java\org\python\util\*.java ^
+    ..\..\jtypes.jvm\jt\jvm\java\org\python\*.java ^
+    ..\..\jtypes.jvm\jt\jvm\java\org\python\core\*.java ^
+    ..\..\jtypes.jvm\jt\jvm\java\org\python\util\*.java ^
     harness\*.java 2> nul > build.fil
 %javac% -d classes -classpath harness/lib/* @build.fil
 del /F/Q build.fil
