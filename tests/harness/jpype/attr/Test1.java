@@ -83,31 +83,31 @@ public class Test1
 		
 	}
 	
-	public boolean mBooleanValue = false; //<AK> was: boolean mBooleanValue = false;
+	public boolean mBooleanValue = false; // <AK> was: boolean mBooleanValue = false;
 	public void setBoolean(boolean b)
 	{
 		mBooleanValue = b;
 	}
 	
-	public byte mByteValue; //<AK> was: byte mByteValue;
+	public byte mByteValue; // <AK> was: byte mByteValue;
 	public void setByte(byte b)
 	{
 		mByteValue = b;
 	}
 
-	public short mShortValue = 0; //<AK> was: short mShortValue = 0;
+	public short mShortValue = 0; // <AK> was: short mShortValue = 0;
 	public void setShort(short s)
 	{
 		mShortValue = s;
 	}
 
-	public int mIntValue = 0; //<AK> was: int mIntValue = 0;
+	public int mIntValue = 0; // <AK> was: int mIntValue = 0;
 	public void setInt(int i)
 	{
 		mIntValue = i;
 	}
 
-	public long mLongValue = 0; //<AK> was: long mLongValue = 0;
+	public long mLongValue = 0; // <AK> was: long mLongValue = 0;
 	public void setLong(long l)
 	{
 		mLongValue = l;

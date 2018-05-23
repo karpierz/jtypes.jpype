@@ -12,13 +12,13 @@ public class TestBean {
 
 	private String property3;
 
-	public String property4; //<AK> JPype error: was: private String property4;
+	public String property4; // <AK> JPype error: was: private String property4;
 
 	private String property5;
 
 	private String property6;
 
-	public String property7; //<AK> JPype error: was: private String property7;
+	public String property7; // <AK> JPype error: was: private String property7;
 
 	public String getProperty1() {
 		return "get" + property1;

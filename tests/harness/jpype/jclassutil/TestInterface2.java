@@ -1,4 +1,4 @@
-//<AK> added
+// <AK> added
 
 package jpype.jclassutil;
 

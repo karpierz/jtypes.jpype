@@ -1,21 +1,21 @@
 package jpype.ref;
 
-//<AK> added - import from jt.jtypes
+// <AK> added: imports from jt.jtypes
 //import com.jt.ref.ReferenceQueue;
 //import com.jt.ref.Reference;
-//</AK>
+// </AK>
 
 public class TestReferenceQeue
 {
   public static void main(String[] args)
   {
-//    final ReferenceQueue queue = new ReferenceQueue(); //<AK> was: JPypeReferenceQueue
+//    final ReferenceQueue queue = new ReferenceQueue(); // <AK> was: JPypeReferenceQueue
 //    
 //    new Thread(new Runnable() {
 //
 //      public void run()
 //      {
-//        queue.start(); //<AK> was: queue.startManaging();
+//        queue.start(); // <AK> was: queue.startManaging();
 //      }
 //      
 //    }).start();
@@ -23,9 +23,9 @@ public class TestReferenceQeue
 //    Object dummy = new Object();
 //    long dummyAddress = 123456;
 //    
-//    Reference ref = new Reference(dummy, queue); //<AK> was: JPypeReference
+//    Reference ref = new Reference(dummy, queue); // <AK> was: JPypeReference
 //    
-//    queue.registerReference(ref, dummyAddress);  //<AK> was: queue.registerRef
+//    queue.registerReference(ref, dummyAddress);  // <AK> was: queue.registerRef
 //    
 //    System.out.println("ref is enqueued? "+ref.isEnqueued());
 //    

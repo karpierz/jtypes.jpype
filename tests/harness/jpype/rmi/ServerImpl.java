@@ -48,7 +48,7 @@ class ServerImpl extends UnicastRemoteObject implements IServer
 		    ServerImpl obj = new ServerImpl();
 		
 		    // Bind this object instance to the name "HelloServer"
-		    Naming.rebind("//127.0.0.1:2004/server", obj); //<AK> was: 192.168.100.60:2004
+		    Naming.rebind("//127.0.0.1:2004/server", obj); // <AK> was: 192.168.100.60:2004
 		
 		    System.out.println("HelloServer bound in registry");
 		} catch (Exception e) {
