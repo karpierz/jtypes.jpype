@@ -35,6 +35,6 @@ other message types (BinaryMessage, ObjectMessage,...).
 
 BTW, I don't detect any noticable slowdown in the python versions from
 the Java versions (probably because of the strightforward conversion
-of python strings to Java Strings).
+of python strings to Java Strings). 
 
 =============================================================================

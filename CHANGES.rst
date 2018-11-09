@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.6.3b2 (2018-11-08)
+--------------------
+- Synchro with JPype master branch.
+- Update of the required setuptools version.
+- Minor setup and tests improvements.
+
 0.6.3b1 (2018-05-22)
 --------------------
 - Synchro with JPype master branch.

@@ -14,9 +14,9 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import, print_function
-import jt.jpype as jpype
-from jt.jpype import JString, java, JArray
+from __future__ import absolute_import, print_function  # <AK> added
+import jpype
+from jpype import JString, java, JArray
 import sys
 import time
 from . import common
@@ -122,11 +122,8 @@ class AttributeTestCase(common.JPypeTestCase):
 
     def testCallWithLong(self):
         h = self.__jp.Test1()
-        if sys.version > '3':
-            l = int(123)
-        else:
-            l = long(123)
-
+        # <AK> four lines below changed to one line (due to coverage)
+        l = int(123) if sys.version > '3' else long(123)
         h.setByte(l)
         self.assertEqual(l, h.mByteValue)
         h.setShort(l)
@@ -138,11 +135,8 @@ class AttributeTestCase(common.JPypeTestCase):
 
     def testCallWithBigLong(self):
         h = self.__jp.Test1()
-        if sys.version > '3':
-            l = int(4398046511103)
-        else:
-            l = long(4398046511103)
- 
+        # <AK> four lines below changed to one line (due to coverage)
+        l = int(4398046511103) if sys.version > '3' else long(4398046511103)
         self.assertRaises(TypeError, h.setByte, l)
         self.assertRaises(TypeError, h.setShort, l)
         self.assertRaises(TypeError, h.setInt, l)
@@ -151,11 +145,8 @@ class AttributeTestCase(common.JPypeTestCase):
 
     def testCallWithBigInt(self):
         h = self.__jp.Test1()
-        if sys.version > '3' or sys.maxint > 2**31:
-            l = int(4398046511103)
-        else:
-            l = long(4398046511103)
- 
+        # <AK> four lines below changed to one line (due to coverage)
+        l = int(4398046511103) if sys.version > '3' or sys.maxint > 2**31 else long(4398046511103)
         self.assertRaises(TypeError, h.setByte, l)
         self.assertRaises(TypeError, h.setShort, l)
         self.assertRaises(TypeError, h.setInt, l)
@@ -174,16 +165,12 @@ class AttributeTestCase(common.JPypeTestCase):
         self.assertEqual(True, h.mBooleanValue)
         h.setBoolean(0)
         self.assertEqual(False, h.mBooleanValue)
-        if sys.version > '3':
-            l = int(4398046511103)
-        else:
-            l = long(4398046511103)
+        # <AK> four lines below changed to one line (due to coverage)
+        l = int(4398046511103) if sys.version > '3' else long(4398046511103)
         h.setBoolean(l)
         self.assertEqual(True, h.mBooleanValue)
-        if sys.version > '3':
-            l = int(0)
-        else:
-            l = long(0)
+        # <AK> four lines below changed to one line (due to coverage)
+        l = int(0) if sys.version > '3' else long(0)
         h.setBoolean(l)
         self.assertEqual(False, h.mBooleanValue)
 
@@ -197,10 +184,8 @@ class AttributeTestCase(common.JPypeTestCase):
 
         self.assertEqual(h.charValue, 'b')
         self.assertEqual(h.charValue, u'b')  # <AK> added
-        if sys.version < '3':
-            exp_repr = "u'b'"
-        else:
-            exp_repr = "'b'"
+        # <AK> four lines below changed to one line (due to coverage)
+        exp_repr = "u'b'" if sys.version < '3' else "'b'"
         self.assertEqual(repr(h.charValue), exp_repr)
 
     def testGetPrimitiveType(self):

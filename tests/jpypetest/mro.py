@@ -14,8 +14,8 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
-from jt.jpype import JPackage, java
+from __future__ import absolute_import  # <AK> added
+from jpype import JPackage, java
 import sys
 from . import common
 

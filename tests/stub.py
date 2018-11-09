@@ -14,8 +14,8 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import, print_function
-import jt.jpype as jpype
+from __future__ import absolute_import, print_function  # <AK> added
+from jt import jpype
 jpype.startJVM(jpype.getDefaultJVMPath(), "-ea")
 
 s = jpype.java.lang.String

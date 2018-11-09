@@ -14,12 +14,12 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import, print_function
+from __future__ import absolute_import, print_function  # <AK> added
 from os import path
 import time
 from jt.jpype import *
 
-root = path.abspath(path.dirname(__file__))
+root = path.dirname(path.abspath(__file__))  # <AK> was: path.abspath(path.dirname(
 startJVM(getDefaultJVMPath(), "-ea",
          "-Djava.class.path=%s" % path.join(root, "classes"))
 

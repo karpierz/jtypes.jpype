@@ -14,14 +14,14 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
+from __future__ import absolute_import  # <AK> added
 try:
     import unittest2 as unittest
 except ImportError:
     import unittest
 import sys
-import jt.jpype as jpype
-from jt.jpype import JPackage, JArray, JByte, java
+import jpype
+from jpype import JPackage, JArray, JByte, java
 from . import common
 
 if sys.version > '3':
@@ -39,12 +39,12 @@ class ReflectCase(common.JPypeTestCase):
         t = jpype.JClass('java.lang.Object')
         obj = self.Reflect()
         print("!!!Reflect")
-        print("=======")
-        print("@1@", type(self.Reflect),         self.Reflect,         id(self.Reflect))        
-        print("@2@", type(self.Reflect.class_),  self.Reflect.class_,  id(self.Reflect.class_)) 
-        print("@3@", type(obj.getClass()),       obj.getClass(),       id(obj.getClass()))      
-        print("@4@", type(obj.__class__),        obj.__class__,        id(obj.__class__))       
-        print("@5@", type(obj.__class__.class_), obj.__class__.class_, id(obj.__class__.class_))
+        print("==========")
+        print("@1@ {} {} {}".format(type(self.Reflect),         self.Reflect,         id(self.Reflect)))
+        print("@2@ {} {} {}".format(type(self.Reflect.class_),  self.Reflect.class_,  id(self.Reflect.class_)))
+        print("@3@ {} {} {}".format(type(obj.getClass()),       obj.getClass(),       id(obj.getClass())))
+        print("@4@ {} {} {}".format(type(obj.__class__),        obj.__class__,        id(obj.__class__)))
+        print("@5@ {} {} {}".format(type(obj.__class__.class_), obj.__class__.class_, id(obj.__class__.class_)))
         print("!!!")
         self.assertEquals('Class', self.test1.testClassVsObject(self.Reflect))
         self.assertEquals('Class', self.test1.testClassVsObject(self.Reflect.class_))

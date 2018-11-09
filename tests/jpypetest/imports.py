@@ -14,8 +14,8 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
-import jt.jpype as jpype
+from __future__ import absolute_import  # <AK> added
+import jpype
 import sys
 import logging
 import time
@@ -28,7 +28,7 @@ except ImportError:
 
 def haveJImports():
     try:
-        import jt.jpype.imports
+        import jpype.imports
         return True
     except ImportError:  # pragma: no cover # <AK> added
         return False

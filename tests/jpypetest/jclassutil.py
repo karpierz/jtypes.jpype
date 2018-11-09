@@ -9,8 +9,7 @@ from __future__ import absolute_import
 
 from . import common
 
-from jt.jpype import JPackage, JClass
-from jt.jpype import JClassUtil
+from jpype import JPackage, JClass, JClassUtil
 
 
 class JClassUtilTestCase(common.JPypeTestCase):

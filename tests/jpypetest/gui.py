@@ -14,7 +14,7 @@ class GuiTestCase(common.JPypeTestCase):
 
     def testGuiImports(self):
 
-        from jt.jpype import awt
+        from jpype import awt
         self.assertTrue(hasattr(awt, "event"))
         from jt.jpype.awt import event
         self.assertIs(awt.event, event)
@@ -22,7 +22,7 @@ class GuiTestCase(common.JPypeTestCase):
         from jt.jpype.awt.event import WindowAdapter
         self.assertIs(awt.event.WindowAdapter, WindowAdapter)
 
-        from jt import jpypex
+        import jpypex
         self.assertTrue(hasattr(jpypex, "swing"))
         from jt.jpypex import swing
         self.assertIs(jpypex.swing, swing)

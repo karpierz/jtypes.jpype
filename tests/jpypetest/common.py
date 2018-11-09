@@ -14,9 +14,9 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
+from __future__ import absolute_import  # <AK> added
 
-import jt.jpype as jpype
+import jpype
 import logging
 from os import path
 import sys
@@ -30,7 +30,8 @@ CLASSPATH = None
 class JPypeTestCase(unittest.TestCase) :
     def setUp(self):
         if not jpype.isJVMStarted():
-            root = path.dirname(path.abspath(path.dirname(__file__)))
+            # <AK> was: path.abspath(path.dirname(
+            root = path.dirname(path.dirname(path.abspath(__file__)))
             jpype.addClassPath(path.join(root, 'classes'))
             jvm_path = jpype.getDefaultJVMPath()
             logger = logging.getLogger(__name__)

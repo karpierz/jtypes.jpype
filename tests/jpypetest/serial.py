@@ -14,8 +14,8 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
-from jt.jpype import JException, java, JavaException, JProxy, JClass
+from __future__ import absolute_import  # <AK> added
+from jpype import JException, java, JavaException, JProxy, JClass
 import os
 import sys
 import tempfile
@@ -35,7 +35,7 @@ class SerializationTestCase(common.JPypeTestCase):
         o = JClass("jpype.serial.SerializationTest")()
         tmp = self.tempname
         if sys.platform=='cygwin':  # pragma: no cover # <AK> added
-            from jt.jpype import _posix2win
+            from jpype import _posix2win
             tmp = _posix2win(tmp)
         fos = java.io.FileOutputStream(tmp)
         oos = java.io.ObjectOutputStream(fos)

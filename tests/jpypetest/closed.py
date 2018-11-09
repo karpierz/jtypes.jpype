@@ -1,6 +1,6 @@
-from __future__ import absolute_import
+from __future__ import absolute_import  # <AK> added
 import unittest
-import jt.jpype as jpype
+import jpype
 from . import common
 
 #jpype.startJVM(jpype.getDefaultJVMPath())
@@ -10,7 +10,7 @@ class ClosedTestCase(common.JPypeTestCase):
         common.JPypeTestCase.setUp(self)
 
     def testObjects(self):
-        from jt.jpype import java
+        from jpype import java
 
         s=java.lang.String('foo')
         s._allowed = 1

@@ -14,13 +14,13 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
+from __future__ import absolute_import  # <AK> added
 try:
     import unittest2 as unittest
 except ImportError:
     import unittest
 import sys
-import jt.jpype as jpype
+import jpype
 from . import common
 
 #Python2/3 support
@@ -38,10 +38,6 @@ class ValuesTestCase(common.JPypeTestCase):
     def testIntFromInt(self):
         self.Fields.intField = 1
         self.assertEquals(self.Fields.intField,1)
-
-    def testIntFromInt(self):
-        with self.assertRaises(TypeError):
-            self.Fields.intField = 7.2
 
     def testIntFromFloat(self):
         with self.assertRaises(TypeError):

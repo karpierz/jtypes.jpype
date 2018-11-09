@@ -1,5 +1,5 @@
-# <AK> converted from pytest to unittest
-#
+# <AK> moved from ../convtest.py and converted to unittest and PY3
+
 #*****************************************************************************
 #   Copyright 2004-2008 Steve Menard
 #
@@ -16,9 +16,9 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import, print_function
+from __future__ import absolute_import, print_function  # <AK> added
 
-import jt.jpype as jpype
+import jpype
 import array
 import time
 import os
@@ -28,6 +28,7 @@ def generateStringData(aSize):
     return b'a' * aSize  # <AK> was: ''.join(['a']*aSize)
 
 DATA_SIZE = 5*1024*1024 # 5 MB
+
 
 
 def runBaseline(data):
@@ -68,7 +69,7 @@ def runStringToByteArray(data):
 
 
 DELETED = False
-class MyStr(bytes):
+class MyStr(bytes):  # <AK> was: MyStr(str):
     def __del__(self):
         global DELETED
         print('string got deleted')
@@ -79,8 +80,8 @@ class ConversionTestCase(common.JPypeTestCase):
 
     @classmethod
     def setUpClass(cls):
-        root = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
-       #jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", "-Xmx35M", "-verbose:gc",
+        # <AK> was: os.path.abspath(os.path.dirname(
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", "-Xmx5M", "-verbose:gc",
                        "-Djava.class.path=./classes%s%s%sclasses" % (os.pathsep, root, os.sep))
 
@@ -90,7 +91,7 @@ class ConversionTestCase(common.JPypeTestCase):
 
     def testStringMemory(self):
         print('with keeping the data')
-        data = MyStr(b'5' * 1024)
+        data = MyStr(b'5' * 1024)  # <AK> was: MyStr('5'
         # print(data)  # <AK> commented
         buf = jpype.nio.convertToDirectBuffer(data)
     #    print(buf.get())
@@ -113,8 +114,7 @@ class ConversionTestCase(common.JPypeTestCase):
 
             print('.', end='')
             jpype.JPackage("jpype").nio.NioReceive.allocSomeMemory()
-
-        DELETED = False  # <AK> added
+        DELETED = False  # <AK> fix: added
 
     def testConversion(self):
         # <AK> uncomment

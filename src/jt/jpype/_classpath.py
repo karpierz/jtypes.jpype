@@ -4,7 +4,7 @@
 
 from __future__ import absolute_import
 
-import os.path as _osp
+import os.path as _path
 import glob    as _glob
 import sys
 _is_cygwin = (sys.platform == "cygwin")
@@ -13,7 +13,7 @@ del sys
 __all__ = ('addClassPath', 'getClassPath')
 
 _CLASSPATHS = set()
-_PATHSEP = ";" if _is_cygwin else _osp.pathsep
+_PATHSEP = ";" if _is_cygwin else _path.pathsep
 
 
 def _init():
@@ -51,7 +51,7 @@ if _is_cygwin:
 
         parts = []
         while True:
-            path, tail = _osp.split(path)
+            path, tail = _path.split(path)
             if not (path and tail):
                 break
             parts.insert(0, tail)
@@ -61,7 +61,7 @@ if _is_cygwin:
     def _posix2win(directory):
 
         root  = _get_root()
-        paths = _splitpath(_osp.abspath(directory))
+        paths = _splitpath(_path.abspath(directory))
         if paths[0] == "cygdrive":
             paths.pop(0)
             drive = paths.pop(0)
@@ -80,7 +80,7 @@ def addClassPath(path):
     """Add a path to the java class path"""
 
     global _CLASSPATHS
-    path = _osp.abspath(path)
+    path = _path.abspath(path)
     if _is_cygwin:
         path = _posix2win(path)
     _CLASSPATHS.add(path)

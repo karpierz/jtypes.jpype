@@ -16,13 +16,13 @@ This module supports three different styles of importing java classes.
 **import <java_package_path>**  
 
 Importing a series of package creates a path to all classes contained
-in that package.  It does not provide access the the contained packages.
+in that package.  It does not provide access to the contained packages.
 The root package is added to the global scope.  Imported packages are 
 added to the directory of the base module.
 
 Example:
 
-.. code:: python
+.. code-block:: python
 
   import java.lang  # Adds java as a module
   import java.util
@@ -40,7 +40,7 @@ all java classes in that package.  Contained packages are not available.
 
 Example:
 
-.. code:: python
+.. code-block:: python
 
   import java.nio as nio
   bb = nio.ByteBuffer()
@@ -55,7 +55,7 @@ inner classes as well.
 
 Example:
 
-.. code:: python
+.. code-block:: python
 
   # Import one class
   from java.lang import String
@@ -71,7 +71,7 @@ This method can also be used to import a static variable or method
 from a class.
 
 Wild card Imports
-=================
+-----------------
 Wild card imports for classes will import all static method and
 fields into the global namespace.  They will also import any
 inner classes that have been previously be accessed.
@@ -93,18 +93,18 @@ But this is sufficiently unreliable that we recommend not using wildcards
 for any purpose.
 
 Keyword naming
-==============
+--------------
 Occasionally a java class may contain a python keyword.
 Python keywords as automatically remapped using training underscore.
 
 Example:
 
-.. code:: python
+.. code-block:: python
 
   from org.raise_ import Object  => imports "org.raise.Object"
 
 Controlling Java package imports
-================================
+--------------------------------
 By default domains imports four top level domains (TLD) into the python
 import system (com, gov, java, org).  Additional domains can be added
 by calling registerDomain.  Domains can be an alias for a java package
@@ -112,7 +112,7 @@ path.
 
 Example:
 
-.. code:: python
+.. code-block:: python
 
   domains.registerDomain('jname')
   from jname.framework import FrameObject
@@ -120,7 +120,7 @@ Example:
   from jlang import String
 
 Limitations:
-============
+------------
 * Wildcard imports are unreliable and should be avoided.  Limitations
   in the Java specification are such that there is no way to get
   class information at runtime.  Python does not have a good hook
@@ -131,7 +131,7 @@ Limitations:
   functions objects can be called without an object.
 
 Bugs:
-=====
+-----
 * Something in spyder IPython does not play well with the importlib
   hooks.  Inspect element causes a segmentation fault.  Unable
   to determine the source.

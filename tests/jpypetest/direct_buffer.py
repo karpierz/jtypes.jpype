@@ -7,7 +7,7 @@
 
 from __future__ import absolute_import
 
-import jt.jpype as jpype
+import jpype
 from . import common
 
 

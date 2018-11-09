@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from . import common
 
 class PropertiesTestCase(common.JPypeTestCase):
@@ -48,7 +47,7 @@ class PropertiesTestCase(common.JPypeTestCase):
         self._bean.setProperty5("val")
         # <AK> JPype error: attribute 'property5' is private so is not directly available
         #self.assertEqual("setval", self._bean.property5)               # <AK> commented
-        self.assertEqual("returnsetval", self._bean.returnProperty5())  # <AK>
+        self.assertEqual("returnsetval", self._bean.returnProperty5())  # <AK> added
 
     def testPropertyDifferentAttribute(self):
         self._bean.property6 = "val"

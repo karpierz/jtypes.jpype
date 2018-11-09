@@ -23,9 +23,11 @@ public class TestReferenceQeue
 //    Object dummy = new Object();
 //    long dummyAddress = 123456;
 //    
-//    Reference ref = new Reference(dummy, queue); // <AK> was: JPypeReference
-//    
-//    queue.registerReference(ref, dummyAddress);  // <AK> was: queue.registerRef
+//    // <AK> was:
+//    // JPypeReference ref = new JPypeReference(dummy, queue);
+//    // 
+//    // queue.registerRef(ref, dummyAddress);
+//    Reference ref = queue.registerReference(dummy, dummyAddress);
 //    
 //    System.out.println("ref is enqueued? "+ref.isEnqueued());
 //    

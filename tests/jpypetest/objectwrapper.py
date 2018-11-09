@@ -14,14 +14,14 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function  # <AK> added
 try:
     import unittest2 as unittest
 except ImportError:
     import unittest
 
-import jt.jpype as jpype
-from jt.jpype import java, JObject, JPackage, JString
+import jpype
+from jpype import java, JObject, JPackage, JString
 from . import common
 #import os
 #import sys
@@ -56,7 +56,7 @@ class ObjectWrapperTestCase(common.JPypeTestCase):
         self.assertEqual(class_obj, result)
         self.assertNotEqual(result, None)
 
-    # <AK> @unittest.skip("This seems to be a bug in _jwrapper.py _getDefaultTypeName")
+    # <AK> commented: @unittest.skip("This seems to be a bug in _jwrapper.py _getDefaultTypeName")
     def testDefaultTypeNameJavaClass(self):
         o = java.lang.String
         self.assertEqual(JObject(o).typeName, "java.lang.Class")

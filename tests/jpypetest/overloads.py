@@ -14,13 +14,13 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
-import jt.jpype as jpype
-from jt.jpype import JString, java, JArray, JClass, JByte, JShort, JInt, JLong, JFloat, JDouble, JChar, JBoolean
+from __future__ import absolute_import  # <AK> added
+import jpype
+from jpype import JString, java, JArray, JClass, JByte, JShort, JInt, JLong, JFloat, JDouble, JChar, JBoolean
 import sys
 import time
 from . import common
-from jt.jpype._jwrapper import JObject
+from jpype._jwrapper import JObject
 
 java = jpype.java
 

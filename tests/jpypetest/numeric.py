@@ -14,8 +14,8 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
-from jt.jpype import JPackage, java, JFloat, JByte, JShort, JInt, JLong
+from __future__ import absolute_import  # <AK> added
+from jpype import JPackage, java, JFloat, JByte, JShort, JInt, JLong
 from . import common
 import sys
 
@@ -69,7 +69,7 @@ class NumericTestCase(common.JPypeTestCase):
         self.checkJWrapper(-2**31, 2**31-1, java.lang.Integer, JInt)
 
     def testJLongWrapper(self):
-        self.checkJWrapper(-2**63, 2**63-1, java.lang.Long, JLong)#!!!, OverflowError)
+        self.checkJWrapper(-2**63, 2**63-1, java.lang.Long, JLong, OverflowError)
         
     def testJFloatWrapper(self):
         jwrapper = JFloat

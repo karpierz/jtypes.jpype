@@ -14,10 +14,10 @@ from ._jwrapper   import *  # noqa
 from ._jexception import *  # noqa
 from ._gui        import *  # noqa
 from ._classpath  import *  # noqa
-from .            import nio
-from .            import reflect
-from .            import JClassUtil
 from ._obsolete   import *  # noqa
+from . import nio
+from . import reflect
+from . import JClassUtil
 
 java  = JPackage("java")
 javax = JPackage("javax")

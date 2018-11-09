@@ -1,3 +1,5 @@
+# <AK> moved to ./jpypetest/convtest.py and converted to unittest
+from __future__ import absolute_import
 import sys, os, runpy
 sys.argv[1:] = ["convtest"]
 cur_dir = os.path.dirname(os.path.abspath(__file__))

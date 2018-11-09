@@ -1,5 +1,5 @@
-from __future__ import absolute_import
-import jt.jpype as jpype
+from __future__ import absolute_import  # <AK> added
+import jpype
 from . import common
 
 class CollectionTestCase(common.JPypeTestCase):

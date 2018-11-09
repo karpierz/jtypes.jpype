@@ -3,7 +3,7 @@ include CHANGES.rst
 include LICENSE
 include tox.ini
 
-graft jt
+graft src
 
 graft docs
 prune docs/_build

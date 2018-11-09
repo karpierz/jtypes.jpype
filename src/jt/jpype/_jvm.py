@@ -5,15 +5,18 @@
 from __future__ import absolute_import
 
 
-def get_default_jvm_path():
+def get_default_jvm_path(java_version=None):
+
+    # <AK> Extension for the original JPype:
+    # java_version parameter has been added
 
     from ..jtypes._jvm import JVM
-    return JVM.defaultPath()
+    return JVM.defaultPath(java_version)
 
 getDefaultJVMPath = get_default_jvm_path
 
 
-def startJVM(jvm=None, *args):
+def startJVM(jvm=None, *args, **kwargs):
 
     # <AK> Extension for the original JPype:
     # jvm can be None, will be treated as use of default JVM path
@@ -34,6 +37,9 @@ def startJVM(jvm=None, *args):
         else:
             from ..jtypes._exceptions import InvalidArgumentError
             raise InvalidArgumentError("VM Arguments must be string or tuple")
+
+    ignoreUnrecognized = kwargs.get("ignoreUnrecognized", False)
+    classpath          = kwargs.get("classpath", None)
 
     vm = JVM()
     vm.load(jvm)

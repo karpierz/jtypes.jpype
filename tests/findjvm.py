@@ -14,9 +14,9 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import, print_function
-import jt.jpype as jpype
+from __future__ import absolute_import, print_function  # <AK> added
 import os.path
+from jt import jpype
 
 jvmlib = jpype.getDefaultJVMPath()
 print(os.path.dirname(os.path.dirname(jvmlib)))

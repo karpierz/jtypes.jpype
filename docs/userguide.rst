@@ -49,7 +49,7 @@ Using jtypes.jpype
 
 Here is a sample program to demonstrate how to use jtypes.jpype:
 
-.. code:: python
+.. code-block:: python
 
   from jt.jpype import *
   startJVM(getDefaultJVMPath(), "-ea")
@@ -163,7 +163,7 @@ following differences:
 Arrays
 ------
 
-jt.jpype has full support for receiving Java arrays and passing them to Java
+jtypes.jpype has full support for receiving Java arrays and passing them to Java
 methods. Java arrays, wrapped in the JArray wrapper class, behave like Python
 lists, except that their size is fixed, and that the contents are of a
 specific type.
@@ -180,7 +180,7 @@ Creating Java arrays from Python
 The JArray wrapper is used to create Arrays from Python code. The code to
 create an array is like this:
 
-.. code:: python
+.. code-block:: python
 
   JArray(type, num_dims)(sz or sequence)
 
@@ -337,7 +337,7 @@ Sample code :
 
 Assume a Java interface like:
 
-.. code:: java
+.. code-block:: java
 
   public interface ITestInterface2
   {
@@ -348,7 +348,7 @@ Assume a Java interface like:
 You can create a proxy *implementing* this interface in 2 ways.
 First, with a class:
 
-.. code:: python
+.. code-block:: python
 
   class C:
 
@@ -363,7 +363,7 @@ First, with a class:
 
 or you can do it with a dictionary:
 
-.. code:: python
+.. code-block:: python
 
   def _testMethod():
       return 32
@@ -397,24 +397,24 @@ extended information.
 
 Here is an example:
 
-.. code:: python
+.. code-block:: python
 
   try:
       # Code that throws a java.lang.RuntimeException
   except JavaException as ex:
       if ex.javaClass() is java.lang.RuntimeException:
-          print("Caught the runtime exception : {}".format(ex.message())
+          print("Caught the runtime exception : {}".format(ex.message()))
           print(ex.stacktrace())
 
 Alternately, you can catch the REAL Java exception directly by using
 the JException wrapper.
 
-.. code:: python
+.. code-block:: python
 
   try:
       # Code that throws a java.lang.RuntimeException
   except jt.jpype.JException(java.lang.RuntimeException) as ex:
-      print("Caught the runtime exception : {}".format(ex.message())
+      print("Caught the runtime exception : {}".format(ex.message()))
       print(ex.stacktrace())
 
 
@@ -468,7 +468,7 @@ Module Reference
 ----------------
 
 getDefaultJVMPath method
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 This method tries to automatically obtain the path to a Java runtime
 installation. This path is needed as argument for startJVM method and should
@@ -657,7 +657,7 @@ constructor. Sub-packages will be created on demand.
 
 For example, to import the w3c DOM package:
 
-.. code:: python
+.. code-block:: python
 
   Document = JPackage("org").w3c.dom.Document
 
@@ -680,15 +680,15 @@ as long as they have different parameters. Python does not allow that. Most
 of the time, this is not a problem. Most overloaded methods have very
 different parameters and no confusion takes place.
 
-When jt.jpype is unable to decide with overload of a method to call, the user
-must resolve the ambiguity. That's where the wrapper classes come in.
+When jt.jpype module is unable to decide with overload of a method to call,
+the user must resolve the ambiguity. That's where the wrapper classes come in.
 
 Take for example the java.io.PrintStream class. This class has a variant of
 the print and println methods!
 
 So for the following code:
 
-.. code:: python
+.. code-block:: python
 
   from jt.jpype import *
   startJVM(getDefaultJVMPath(), "-ea")
@@ -702,7 +702,7 @@ wanted to call ...
 
 Changing the line thus:
 
-.. code:: python
+.. code-block:: python
 
   from jt.jpype import *
   startJVM(getDefaultJVMPath(), "-ea")
@@ -749,7 +749,3 @@ will be deduced from the first.
 Like other wrappers, the method called will only match EXACTLY. A JObject
 wrapper of type java.lang.Int will not work when calling a method requiring a
 java.lang.Number.
-
-
-.. fixes a bugs in original userguide.rst
-  stackTrace -> stacktrace

@@ -2,6 +2,9 @@
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
 
+# <AK> added
+#
+
 from __future__ import absolute_import, print_function
 
 import os
@@ -19,14 +22,14 @@ lucene_jars = [LUCENE_HOME + "/core/*.jar",
                LUCENE_HOME + "/analysis/common/*.jar",
                LUCENE_HOME + "/queryparser/*.jar"]
 
-jvm_path     = getDefaultJVMPath()
-jars_paths   = sum((glob.glob(jar_path) for jar_path in lucene_jars), [])
-temp_dirname = tempfile.mkdtemp()
+jvm_path   = getDefaultJVMPath()
+jars_paths = sum((glob.glob(jar_path) for jar_path in lucene_jars), [])
 
 print("Running using JVM:", jvm_path)
 print()
 
-startJVM(jvm_path, "-ea", '-Djava.class.path={}'.format(os.pathsep.join(jars_paths)))
+startJVM(jvm_path, "-ea",
+         "-Djava.class.path={}".format(os.pathsep.join(jars_paths)))
 
 FSDirectory                = JClass("org.apache.lucene.store.FSDirectory")
 IndexWriterConfig          = JClass("org.apache.lucene.index.IndexWriterConfig")
@@ -46,6 +49,8 @@ StoredField                = JClass("org.apache.lucene.document.StoredField")
 Version                    = JClass("org.apache.lucene.util.Version")
 IndexWriterConfig_OpenMode = JClass("org.apache.lucene.index.IndexWriterConfig$OpenMode")
 Field_Store                = JClass("org.apache.lucene.document.Field$Store")
+
+temp_dirname = tempfile.mkdtemp()
 
 version   = Version.LUCENE_CURRENT
 analyzer  = StandardAnalyzer(version)

@@ -1,29 +1,29 @@
 # -*- coding: utf-8 -*-
-import jt.jpype as jpype
+from __future__ import absolute_import, print_function  # <AK> added
+import jpype
 import gc
 import sys
 from . import common
 
 try:
     import unittest2 as unittest
-except ImportError:
+except ImportError:  # pragma: no cover # <AK> added
     import unittest
 
 try:
     import resource
-except ImportError:
+except ImportError:  # pragma: no cover # <AK> added
     resource = None
     pass
 
 try:
     xrange
-except NameError:
+except NameError:  # pragma: no cover # <AK> added
     xrange = range
 
 def haveResource():
-    if resource:
-        return True
-    return False
+    # <AK> three lines below changed to one line (due to coverage)
+    return True if resource else False
 
 
 class LeakChecker():

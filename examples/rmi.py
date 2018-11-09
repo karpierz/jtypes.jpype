@@ -16,13 +16,11 @@
 #*****************************************************************************
 #
 # porting for PY3, reformated (PEP8) and adopted for jt.jpype by Adam Karpierz
-#
 
-from __future__ import absolute_import, division, print_function
+from __future__ import absolute_import, print_function
 
 # the java classes used are defined the test harness.
-# the class jpype.rmi.ServerImpl must be started before this script
-# can be run.
+# the class jpype.rmi.ServerImpl must be started before this script can be run.
 
 from jt.jpype import *
 
@@ -31,8 +29,8 @@ root = os.path.abspath(os.path.dirname(__file__))
 startJVM(getDefaultJVMPath(),
          "-ea", "-Djava.class.path=%s/../tests/classes" % root)
 
-if java.lang.System.getSecurityManager() is None:
-    java.lang.System.setSecurityManager(java.lang.SecurityManager())
+if java.lang.System.getSecurityManager() is None:                     # <AK> fix: added
+    java.lang.System.setSecurityManager(java.lang.SecurityManager())  # <AK> fix: added
 
 p = java.rmi.Naming.lookup("rmi://localhost:2004/server")
 

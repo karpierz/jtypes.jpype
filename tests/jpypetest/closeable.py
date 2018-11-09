@@ -14,12 +14,12 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
+from __future__ import absolute_import  # <AK> added
 try:
     import unittest2 as unittest
 except ImportError:
     import unittest
-import jt.jpype as jpype
+import jpype
 from . import common
 import sys
 

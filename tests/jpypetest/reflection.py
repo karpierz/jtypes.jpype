@@ -9,7 +9,8 @@ from __future__ import absolute_import, print_function
 
 from . import common
 
-from jt.jpype import java, reflect
+from jpype import reflect
+from jpype import java
 
 
 class ReflectionTestCase(common.JPypeTestCase):
@@ -43,10 +44,12 @@ class ReflectionTestCase(common.JPypeTestCase):
 
         class_name = String.__javaclass__.getName()
 
-        #print("Constructors of {}:         ".format(class_name), constructors)
-        #print("Declared constructors of {}:".format(class_name), declared_constructors)
-        #print("Methods of {}:              ".format(class_name), methods)
-        #print("Declared methods of {}:     ".format(class_name), declared_methods)
-        #print("Fields of {}:               ".format(class_name), fields)
-        #print("Declared fields of {}:      ".format(class_name), declared_fields)
-
+        print("!!!Reflection")
+        print("=============")
+        print("Constructors of {}:         ".format(class_name), constructors)
+        print("Declared constructors of {}:".format(class_name), declared_constructors)
+        print("Methods of {}:              ".format(class_name), methods)
+        print("Declared methods of {}:     ".format(class_name), declared_methods)
+        print("Fields of {}:               ".format(class_name), fields)
+        print("Declared fields of {}:      ".format(class_name), declared_fields)
+        print("!!!")

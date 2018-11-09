@@ -1,8 +1,6 @@
-#
 # porting for PY3, reformated (PEP8) and adopted for jt.jpype by Adam Karpierz
-#
 
-from __future__ import absolute_import, division, print_function
+from __future__ import absolute_import, print_function
 
 from jt.jpype import *
 import time

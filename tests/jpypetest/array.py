@@ -14,15 +14,15 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
+from __future__ import absolute_import  # <AK> added
 try:
     import unittest2 as unittest
 except ImportError:
     import unittest
 import sys
-import jt.jpype as jpype
-from jt.jpype import JPackage, JArray, JByte, java
-from jt.jpype import JIterator  # <AK> added
+import jpype
+from jpype import JPackage, JArray, JByte, java
+from jpype import JIterator  # <AK> added
 from . import common
 
 if sys.version > '3':
@@ -180,7 +180,7 @@ class ArrayTestCase(common.JPypeTestCase):
         VALUES = [float(x) for x in self.VALUES]
         jarr = jpype.JArray(jpype.JFloat)(VALUES)
         result = jarr[0: len(jarr)]
-        self.assertCountEqual(VALUES, result)  # <AK> was: (jarr, result)
+        self.assertCountEqual(VALUES, result)  # <AK> fix, was: (jarr, result)
 
         result = jarr[2:10]
         self.assertCountEqual(VALUES[2:10], result)
@@ -291,3 +291,70 @@ class ArrayTestCase(common.JPypeTestCase):
         jarr = jpype.JArray(jpype.JDouble)(n)
         jarr[:] = a
         self.assertCountEqual(a, jarr)
+
+    @unittest.skipUnless(haveNumpy(), "numpy not available")
+    def testInitFromNPIntArray(self):
+        import numpy as np
+        n = 100
+        a = np.random.random(n).astype(np.int)
+        jarr = jpype.JArray(jpype.JInt)(a)
+        self.assertCountEqual(a, jarr)
+
+    @unittest.skipUnless(haveNumpy(), "numpy not available")
+    def testInitFromNPDoubleArray(self):
+        import numpy as np
+        n = 100
+        a = np.random.random(n).astype(np.float)
+        jarr = jpype.JArray(jpype.JDouble)(a)
+        self.assertCountEqual(a, jarr)
+
+    @unittest.skipUnless(haveNumpy(), "numpy not available")
+    def testInitFromNPDoubleArrayFloat32(self):
+        import numpy as np
+        n = 100
+        a = np.random.random(n).astype(np.float32)
+        jarr = jpype.JArray(jpype.JDouble)(a)
+        self.assertCountEqual(a, jarr)
+
+    @unittest.skipUnless(haveNumpy(), "numpy not available")
+    def testInitFromNPDoubleArrayFloat64(self):
+        import numpy as np
+        n = 100
+        a = np.random.random(n).astype(np.float64)
+        jarr = jpype.JArray(jpype.JDouble)(a)
+        self.assertCountEqual(a, jarr)
+
+    @unittest.skipUnless(haveNumpy(), "numpy not available")
+    def testInitFromNPFloatArrayInt(self):
+        import numpy as np
+        a = np.array([1,2,3],dtype=np.int32)
+        jarr = jpype.JArray(jpype.JFloat)(a)
+        print(a)
+        print(jarr)
+        self.assertCountEqual(a, jarr)
+
+    @unittest.skipUnless(haveNumpy(), "numpy not available")
+    def testSetFromNPFloatArrayInt(self):
+        import numpy as np
+        a = np.array([1,2,3],np.int32)
+        jarr = jpype.JArray(jpype.JFloat)(len(a))
+        jarr[:] = a
+        self.assertCountEqual(a, jarr)
+
+    def testArrayCtor1(self):
+        jobject = jpype.JClass('java.lang.Object')
+        jarray = jpype.JArray(jobject)
+        self.assertTrue( isinstance(jarray, jpype.JavaArrayClass))  # <AK> was: jpype._jarray._JavaArray
+
+    def testArrayCtor2(self):
+        jobject = jpype.JClass('java.util.List')
+        jarray = jpype.JArray(jobject)
+        self.assertTrue( isinstance(jarray, jpype.JavaArrayClass))  # <AK> was: jpype._jarray._JavaArray
+
+    def testArrayCtor3(self):
+        jarray = jpype.JArray("java.lang.Object")
+        self.assertTrue( isinstance(jarray, jpype.JavaArrayClass))  # <AK> was: jpype._jarray._JavaArray
+
+    def testArrayCtor4(self):
+        jarray = jpype.JArray(jpype.JObject)
+        self.assertTrue( isinstance(jarray, jpype.JavaArrayClass))  # <AK> was: jpype._jarray._JavaArray

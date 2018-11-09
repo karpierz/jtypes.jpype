@@ -1,10 +1,10 @@
-from __future__ import absolute_import, print_function
+from __future__ import absolute_import, print_function  # <AK> added
 from os import path
 import shutil
 import tempfile
 from jt.jpype import *
 
-root = path.dirname(path.abspath(__file__))
+root = path.dirname(path.abspath(__file__))  # <AK> added
 lucene_jar = path.join(root, "lib", "lucene-1.4.3.jar")
 if not path.isfile(lucene_jar):
     raise IOError("Please provide %s" % path.abspath(lucene_jar))

@@ -14,8 +14,8 @@
 #   limitations under the License.
 #
 #*****************************************************************************
-from __future__ import absolute_import
-from jt.jpype import JException, java, JavaException, JProxy, JPackage
+from __future__ import absolute_import  # <AK> added
+from jpype import JException, java, JavaException, JProxy, JPackage
 import traceback
 try:
     import unittest2 as unittest
@@ -50,7 +50,7 @@ class ExceptionTestCase(common.JPypeTestCase):
             trace = ex.stacktrace()
             self.assertTrue(trace.startswith('java.lang.RuntimeException: Foo'))
 
-    # <AK> @unittest.skip("Throwing specific Java exception from Python doesn't work")
+    # <AK> commented: @unittest.skip("Throwing specific Java exception from Python doesn't work")
     def testThrowException(self):
         d = {"throwIOException": throwIOException, }
         p = JProxy(self.jpype.exc.ExceptionThrower, dict=d)

@@ -1,20 +1,20 @@
 # part of JPype1; author Martin K. Scherer; 2014
-from __future__ import absolute_import
+from __future__ import absolute_import  # <AK> added
 try:
     import unittest2 as unittest
 except ImportError:
     import unittest
 import mock
 
-from jt.jpype._jvmfinder import *
-from jt.jpype._linux import *
-from jt.jpype._darwin import *
-from jt.jpype._windows import *  # <AK> added for coverage
+from jpype._jvmfinder import *
+from jpype._linux import *
+from jpype._darwin import *
+from jpype._cygwin import *   # <AK> added for coverage
+from jpype._windows import *  # <AK> added for coverage
 
 import sys
 import os  # <AK> fix, missing
 
-@unittest.skipIf(sys.platform.startswith("win"), "not implemented on Windows")  # <AK> fix, missing
 class JVMFinderTest(unittest.TestCase):
     """
     test some methods to obtain a jvm.
@@ -98,31 +98,9 @@ class JVMFinderTest(unittest.TestCase):
 
         self.assertEqual(p, None)
 
-    @unittest.skipUnless(sys.version_info[:2] == (2, 6), "only py26")
-    @mock.patch('platform.mac_ver')
-    def test_javahome_binary_py26(self, mock_mac_ver):
-        # this version has java_home binary
-        mock_mac_ver.return_value = ('10.6.8', '', '')
-        expected = '/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home\n'
-
-        finder = DarwinJVMFinder()
-
-        # fake check_output
-        with mock.patch('subprocess.Popen') as mock_popen:
-            class proc:
-                def communicate(self):
-                    return (expected, )
-            mock_popen.return_value = proc()
-
-            p = finder._javahome_binary()
-
-            self.assertEqual(p.strip(), expected.strip())
-
-        # this version has no java_home binary
-        mock_mac_ver.return_value = ('10.5', '', '')
-        p = finder._javahome_binary()
-
-        self.assertEqual(p, None)
+    # <AK> removed due to Py26 only specific
+    # def test_javahome_binary_py26(self, mock_mac_ver):
+    #     ...
 
 if __name__ == '__main__':
     unittest.main()

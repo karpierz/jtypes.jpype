@@ -16,12 +16,11 @@
 #*****************************************************************************
 #
 # porting for PY3, reformated (PEP8) and adopted for jt.jpype by Adam Karpierz
-#
 
-from __future__ import absolute_import, division, print_function
+from __future__ import absolute_import, print_function
 
-import jt.jpype as jpype
 import os.path
+from jt import jpype
 
 jvmlib = jpype.getDefaultJVMPath()
 print(os.path.dirname(os.path.dirname(jvmlib)))

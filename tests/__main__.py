@@ -7,6 +7,7 @@ from __future__ import absolute_import, print_function
 import unittest
 import sys
 import os
+import importlib
 import logging
 
 from . import test_dir
@@ -28,8 +29,23 @@ def test_suite(names=None, omit=("convtest", "jarray_fixes")):
 
 def main():
 
-    import jt.jpype as jpype
-    jvm_path = jpype.getDefaultJVMPath()
+    sys.modules["jpype"]            = importlib.import_module("jt.jpype")
+    sys.modules["jpypex"]           = importlib.import_module("jt.jpypex")
+    sys.modules["jpype.awt"]        = importlib.import_module("jt.jpype.awt")
+    sys.modules["jpype.imports"]    = importlib.import_module("jt.jpype.imports")
+    sys.modules["jpype.JClassUtil"] = importlib.import_module("jt.jpype.JClassUtil")
+    sys.modules["jpype.nio"]        = importlib.import_module("jt.jpype.nio")
+    sys.modules["jpype.reflect"]    = importlib.import_module("jt.jpype.reflect")
+    sys.modules["jpype._jboxed"]    = importlib.import_module("jt.jpype._jboxed")
+    sys.modules["jpype._jwrapper"]  = importlib.import_module("jt.jpype._jwrapper")
+    sys.modules["jpype._jvmfinder"] = importlib.import_module("jt.jpype._jvmfinder")
+    sys.modules["jpype._linux"]     = importlib.import_module("jt.jpype._linux")
+    sys.modules["jpype._darwin"]    = importlib.import_module("jt.jpype._darwin")
+    sys.modules["jpype._cygwin"]    = importlib.import_module("jt.jpype._cygwin")
+    sys.modules["jpype._windows"]   = importlib.import_module("jt.jpype._windows")
+
+    import jpype
+    jvm_path = jpype.getDefaultJVMPath(java_version=1.8)
 
     print("Running testsuite using JVM:", jvm_path, "\n", file=sys.stderr)
 

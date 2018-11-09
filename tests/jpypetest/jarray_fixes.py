@@ -1,13 +1,12 @@
-# <AK> converted from pytest to unittest
-#
+# <AK> moved from ../test_jarray_fixes.py and converted to unittest and PY3
 """
 Checks for memory leak in the JVM when pushing array data from Python to Java.
 """
-from __future__ import absolute_import, print_function
+from __future__ import absolute_import, print_function  # <AK> added
 
 import sys
 if sys.version_info.major <= 2: range = xrange
-import jt.jpype as jpype
+import jpype
 from . import common
 
 #!!! These settings are finely tuned !!!
@@ -23,6 +22,7 @@ ITERATIONS = 10
 #   Maximum size of JVM heap.
 #   - sets a cap to allow memory leak detection.
 MAX_JVM_HEAP_SIZE_BYTES = 101384192 # 100994192 ## 390000  # <AK> originally was: 128647168
+
 
 class ArrayFixesTestCase(common.JPypeTestCase):
 
