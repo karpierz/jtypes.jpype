@@ -11,7 +11,7 @@ Overview
   | **jtypes.jpype** is a bridge between Python and Java, allowing these to intercommunicate.
   | It is an effort to allow Python programs full access to Java class libraries.
 
-  `PyPI record <https://pypi.python.org/pypi/jtypes.jpype>`__.
+  `PyPI record`_.
 
   | **jtypes.jpype** is a lightweight Python package, based on the *ctypes* or *cffi* library.
   | It is an almost fully compliant implementation of Steve Menard's **JPype** package
@@ -20,7 +20,7 @@ Overview
 About JPype:
 ------------
 
-Borrowed from the `original website <http://jpype.readthedocs.org>`__:
+Borrowed from the `original website`_:
 
   | **JPype** is an effort to allow python programs full access to java class libraries.
   | This is achieved not through re-implementing Python, as Jython/JPython has done,
@@ -70,11 +70,11 @@ To ensure everything is running correctly you can run the tests using::
 Development
 ===========
 
-Visit `development page <https://github.com/karpierz/jtypes.jpype>`__
+Visit `development page`_
 
 Installation from sources:
 
-Clone the `sources <https://github.com/karpierz/jtypes.jpype>`__ and run::
+Clone the `sources`_ and run::
 
     python -m pip install ./jtypes.jpype
 
@@ -101,3 +101,8 @@ Authors
 =======
 
 * Adam Karpierz <adam@karpierz.net>
+
+.. _PyPI record: https://pypi.python.org/pypi/jtypes.jpype
+.. _original website: http://jpype.readthedocs.org
+.. _development page: https://github.com/karpierz/jtypes.jpype
+.. _sources: https://github.com/karpierz/jtypes.jpype
